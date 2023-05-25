@@ -25,5 +25,7 @@ char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char *get_cmd(char *cmd);
+int _strcmp(char *s1, char *s2);
+int strncmp(char *str1, char *str2, size_t n);
 
 #endif
