@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _setenv - function that indicates the success or failure of
  * setting the environment variable
@@ -13,7 +14,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 {
 	extern char **environ;
 	int i = 0, len = 0;
-	char nvr;
+	char *nvr;
 
 	if (!name || !value)
 		return (-1);

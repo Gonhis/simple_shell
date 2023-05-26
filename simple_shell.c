@@ -13,9 +13,12 @@ int main(int ac, char **av, char **env)
 {
 	char *buffer = NULL;
 	size_t n = 0;
-	int buff, status;
+	int buff;
+	int status;
 	char *ncmd, **args;
 	pid_t pid;
+	(void)ac;
+	(void)av;
 
 	while (1)
 	{
@@ -26,13 +29,13 @@ int main(int ac, char **av, char **env)
 			perror("getline");
 		}
 		buffer[buff - 1] = '\0';
-		args = split_string(buffer, " \t\n");
-		if (strcmp(arg[0], "exit") == 0)
+		args = splitter(buffer, " \t\n");
+		if (strcmp(args[0], "exit") == 0)
 			exit(0);
 		pid = fork();
 		if (pid == 0)
 		{
-			ncmd = get_cmd(arg[0]);
+			ncmd = get_cmd(args[0]);
 			if (ncmd)
 				execve(ncmd, args, env);
 			else
@@ -40,7 +43,7 @@ int main(int ac, char **av, char **env)
 			exit(0);
 		}
 		else
-			wait(status);
+			wait(&status);
 	}
 	return (0);
 }

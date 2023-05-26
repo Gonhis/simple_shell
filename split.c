@@ -4,10 +4,11 @@
  * multiple substrings
  *
  * @str: pointer to a character
+ * @del: delimitters for string
  *
  * Return: array of strings
  */
-char **splitter(char *str)
+char **splitter(char *str, char *del)
 {
 	char *token, **tokens;
 	int i = 0;
@@ -18,11 +19,11 @@ char **splitter(char *str)
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(str, " \t\n");
+	token = strtok(str, del);
 	while (token != NULL)
 	{
 		tokens[i] = token;
-		token = strtok(NULL, " \t\n");
+		token = strtok(NULL, del);
 		i++;
 	}
 	for (i = 0; tokens[i]; i++)

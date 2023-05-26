@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * *_getenv - function is used to retrieve the value of an
  * environment variable
